@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en-GB" data-feed="../data/public-feed.json">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Draft: keep search engines away until the real figures are signed off. Remove this line at launch. -->
+<meta name="robots" content="noindex">
+<title>Our impact | BeMoreFab Children's Cancer Charity</title>
+<meta name="description" content="How many children and young people BeMoreFab is supporting right now, and why that support is needed.">
+<link rel="icon" href="data:,">
+<link rel="preload" href="../fonts/aleo-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/canda.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fox.css">
+</head>
+<body>
+<!-- A gentle wobble for chart bars, so they look drawn by hand like everything else in Fab's world -->
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <filter id="wobble" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.6"/>
+  </filter>
+</svg>
+
+<a class="skip" href="#main">Skip to the numbers</a>
+
+<p class="sample-banner" id="sample-banner" hidden>
+  <strong>Draft.</strong> <span id="sample-note">Every BeMoreFab figure on this page is a made-up sample.</span>
+  <a href="../">See the plain version</a>
+</p>
+
+<header class="sky grain">
+  <div class="bunting" role="presentation"></div>
+  <img class="cloud cloud--far" src="art/cloud.webp" alt="" width="215" height="158">
+  <img class="cloud cloud--near" src="art/cloud.webp" alt="" width="215" height="158">
+  <div class="wrap sky__row">
+    <img class="sky__logo" src="../assets/logo.webp" alt="#bemorefab Children's Cancer Charity" width="560" height="536">
+    <div class="sky__words">
+      <h1>Our impact, as it happens</h1>
+      <p class="sky__lead">BeMoreFab supports children, families and schools through childhood cancer. These numbers come straight from our records and are updated every weekday.</p>
+      <p class="plaque plaque--date">Last updated <span data-date>today</span></p>
+    </div>
+  </div>
+  <svg class="horizon" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <path class="horizon__grass" d="M0,40 C120,14 240,48 400,30 S660,8 820,30 S1060,52 1200,22 L1200,70 L0,70 Z"/>
+    <path class="horizon__line" d="M0,40 C120,14 240,48 400,30 S660,8 820,30 S1060,52 1200,22"/>
+  </svg>
+</header>
+
+<main id="main">
+
+  <p class="load-error wrap" id="load-error" hidden>We can't show the latest numbers right now. Please try again in a little while.</p>
+
+  <section class="meadow grain tiles" aria-label="Right now">
+    <div class="wrap stops">
+      <article class="stop">
+        <div class="stop__who"><img src="art/fab.webp" alt="Fab" width="393" height="555"></div>
+        <div class="plaque tile">
+          <h2 class="plaque__name">All our support</h2>
+          <p class="stop__lead">Right now we are supporting</p>
+          <p class="tile__figure" data-figure="headline.children_supported_now">&nbsp;</p>
+          <p class="stop__unit">children and young people</p>
+          <a class="arrow" href="#where">See where they live</a>
+        </div>
+      </article>
+      <article class="stop">
+        <div class="stop__who stop__who--pair"><img src="art/bramble.webp" alt="Bramble" width="393" height="555"><img src="art/moss.webp" alt="Moss" width="393" height="555"></div>
+        <div class="plaque tile">
+          <h2 class="plaque__name">Education</h2>
+          <p class="stop__lead">Right now</p>
+          <p class="tile__figure" data-figure="headline.education_children_now">&nbsp;</p>
+          <p class="stop__unit">children are learning with us</p>
+          <a class="arrow" href="#education">See education</a>
+        </div>
+      </article>
+      <article class="stop">
+        <div class="stop__who"><img src="art/miss-bell.webp" alt="Miss Bell" width="393" height="555"></div>
+        <div class="plaque tile">
+          <h2 class="plaque__name">Primary Virtual School</h2>
+          <p class="stop__lead">This school year our teachers have taught</p>
+          <p class="tile__figure" data-figure="headline.pvs_minutes_school_year">&nbsp;</p>
+          <p class="stop__unit">minutes of live lessons</p>
+          <a class="arrow" href="#virtual-school">See the Virtual School</a>
+        </div>
+      </article>
+      <article class="stop">
+        <div class="stop__who stop__who--place"><img src="art/den-fab.webp" alt="A fox den with a red door" width="241" height="273"></div>
+        <div class="plaque tile">
+          <h2 class="plaque__name">Freddie's Friends</h2>
+          <p class="stop__lead">Right now</p>
+          <p class="tile__figure" data-figure="headline.ff_siblings_now">&nbsp;</p>
+          <p class="stop__unit">brothers and sisters are part of Freddie's Friends</p>
+          <a class="arrow" href="#freddies-friends">See Freddie's Friends</a>
+        </div>
+      </article>
+    </div>
+    <div class="path" role="presentation"></div>
+  </section>
+
+  <!-- No characters in this section on purpose: Fab's own story stays in the books. -->
+  <section class="need" id="need">
+    <div class="wrap">
+      <h2>Why we are needed</h2>
+      <div class="need__grid">
+        <div>
+          <ul class="facts">
+            <li>
+              <p class="facts__n">Around 2,000</p>
+              <p class="facts__t">children are diagnosed with cancer in the UK every year. That is more than five every day.</p>
+              <p class="facts__src">Source: <a href="https://www.cancerresearchuk.org/health-professional/cancer-statistics/statistics-by-cancer-type/childrens-cancers/incidence">Cancer Research UK</a>, 2019 and 2021 to 2022</p>
+            </li>
+            <li>
+              <p class="facts__n">More than 4,000</p>
+              <p class="facts__t">a year when young people aged 15 to 24 are included.</p>
+              <p class="facts__src">Source: <a href="https://www.cclg.org.uk/about-cancer/about-childhood-cancer/survival-rates">CCLG: The Children &amp; Young People's Cancer Association</a></p>
+            </li>
+            <li>
+              <p class="facts__n">9% higher</p>
+              <p class="facts__t">Recorded rates of childhood cancer have risen by around 9% since the early 2000s.</p>
+              <p class="facts__src">Source: <a href="https://www.cancerresearchuk.org/health-professional/cancer-statistics/statistics-by-cancer-type/childrens-cancers/incidence">Cancer Research UK</a></p>
+            </li>
+            <li>
+              <p class="facts__n">More than 8 in 10</p>
+              <p class="facts__t">children now survive for five years or more, so keeping their learning going matters.</p>
+              <p class="facts__src">Source: <a href="https://www.cancerresearchuk.org/health-professional/cancer-statistics/statistics-by-cancer-type/childrens-cancers">Cancer Research UK</a>, 2012 to 2016</p>
+            </li>
+          </ul>
+          <p class="need__close">Treatment can mean long spells away from the classroom, and brothers and sisters feel it too. That is where we come in.</p>
+        </div>
+        <div class="poster poster--a">
+          <h3>Children and young people registering with BeMoreFab each school year</h3>
+          <div class="chart" data-columns="registrations_by_school_year" data-unit="children and young people" data-count="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="room room--class grain" id="education">
+    <div class="wrap room__grid">
+      <div class="room__who room__who--pair"><img src="art/bramble.webp" alt="Bramble" width="393" height="555"><img src="art/moss.webp" alt="Moss" width="393" height="555"></div>
+      <div class="room__main">
+        <h2 class="plaque plaque--title">Education</h2>
+        <p class="room__story">When cancer keeps a child out of school, we keep their learning going: live lessons in our Primary Virtual School, tuition close to home, and secondary learning with our partners.</p>
+        <div class="poster poster--b">
+          <h3>Children learning with us, by type of support</h3>
+          <div data-rows="education.by_support_type" data-unit="children"></div>
+        </div>
+      </div>
+      <div class="room__side">
+        <h3 class="side__title">Over the past 12 months</h3>
+        <dl class="notes">
+          <div class="plaque note"><dt data-figure="education.children_past_12_months">&nbsp;</dt><dd>children supported with their learning</dd></div>
+          <div class="plaque note"><dt data-figure="education.journeys_started_past_12_months">&nbsp;</dt><dd>children started learning with us</dd></div>
+        </dl>
+      </div>
+    </div>
+    <div class="room__floor" role="presentation"></div>
+  </section>
+
+  <section class="room room--hall grain" id="virtual-school">
+    <div class="wrap room__grid">
+      <div class="room__who"><img src="art/miss-bell.webp" alt="Miss Bell" width="393" height="555"></div>
+      <div class="room__main">
+        <h2 class="plaque plaque--title">Primary Virtual School</h2>
+        <p class="room__story">Live lessons with qualified primary teachers, every school day. Wellbeing and confidence come first, and we work alongside each child's own school.</p>
+        <div class="poster poster--a">
+          <h3>Minutes of live lessons taught each month this school year</h3>
+          <div class="chart" data-columns="pvs.minutes_by_month" data-unit="minutes"></div>
+        </div>
+      </div>
+      <div class="room__side">
+        <h3 class="side__title">This school year</h3>
+        <dl class="notes">
+          <div class="plaque note"><dt data-figure="computed.pvs_hours_school_year">&nbsp;</dt><dd>hours of live teaching</dd></div>
+          <div class="plaque note"><dt data-figure="pvs.lessons_school_year">&nbsp;</dt><dd>live lessons taught</dd></div>
+          <div class="plaque note note--who">
+            <img src="art/nurse-willow.webp" alt="Nurse Willow" width="393" height="555">
+            <div><dt data-figure="computed.pvs_wellbeing_hours_min">&nbsp;</dt><dd>hours or more of wellbeing activities. At least a third of our teaching time is for wellbeing.</dd></div>
+          </div>
+        </dl>
+      </div>
+    </div>
+    <div class="room__floor" role="presentation"></div>
+  </section>
+
+  <section class="meadow grain" id="freddies-friends">
+    <div class="path path--top" role="presentation"></div>
+    <div class="wrap room__grid">
+      <div class="room__who room__who--place"><img src="art/den-fab.webp" alt="A fox den with a red door" width="241" height="273"></div>
+      <div class="room__main">
+        <h2 class="plaque plaque--title">Freddie's Friends</h2>
+        <p class="room__story">Cancer changes life for brothers and sisters too. Freddie's Friends is for them: a gift chosen for each child, and treats through the year.</p>
+        <div class="poster poster--b">
+          <h3>Gifts and treats sent each month</h3>
+          <div class="chart" data-columns="freddies_friends.gifts_by_month" data-unit="gifts and treats" data-count="true"></div>
+        </div>
+      </div>
+      <div class="room__side">
+        <h3 class="side__title">Over the past 12 months</h3>
+        <dl class="notes">
+          <div class="plaque note"><dt data-figure="freddies_friends.gifts_past_12_months">&nbsp;</dt><dd>gifts and treats sent to brothers and sisters</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="meadow meadow--where grain" id="where">
+    <div class="wrap room__grid room__grid--two">
+      <div class="where__words">
+        <img class="where__sign" src="art/signpost.webp" alt="" width="153" height="176">
+        <h2 class="plaque plaque--title">Where the children we support live</h2>
+        <p class="room__story">We support families right across the UK. To protect children's privacy we round these figures to the nearest 5, and we never show a number smaller than 5.</p>
+      </div>
+      <div class="poster poster--a">
+        <h3 class="vh">Children and young people we are supporting, by UK region</h3>
+        <div data-rows="regions" data-unit="children and young people"></div>
+      </div>
+    </div>
+    <div class="path" role="presentation"></div>
+  </section>
+
+  <section class="plain" id="what-changes">
+    <div class="wrap with-who">
+      <img class="with-who__who" src="art/mr-elder.webp" alt="Mr Elder" width="393" height="555">
+      <div class="poster poster--b">
+        <h2>What changes for children</h2>
+        <p>We are building this part now. It will show what children and families tell us changes for them: confidence, learning and getting back to school.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="plain plain--about" id="about">
+    <div class="wrap">
+      <h2>About these numbers</h2>
+      <div class="with-who with-who--stop">
+        <img class="with-who__who" src="art/mrs-lark.webp" alt="Mrs Lark with her stop sign" width="393" height="555">
+        <div class="poster poster--a">
+          <h3>Where we stop</h3>
+          <p>These are totals only. Nothing here can identify a child or a family. Regional figures are rounded to the nearest 5 and anything under 5 is shown as "Fewer than 5".</p>
+        </div>
+      </div>
+      <dl class="defs-list">
+        <div><dt>Children and young people we are supporting</dt><dd>Children and young people with at least one kind of support from us open today.</dd></div>
+        <div><dt>Learning with us</dt><dd>Children and young people with education support from us open today.</dd></div>
+        <div><dt>Minutes of live lessons</dt><dd>Minutes of live online lessons taught since 1 September, counting each lesson once.</dd></div>
+        <div><dt>Freddie's Friends</dt><dd>Brothers and sisters of a child with cancer who are part of Freddie's Friends today.</dd></div>
+        <div><dt>How often it updates</dt><dd>Every weekday, from BeMoreFab's own records. Last updated <span data-date>today</span>.</dd></div>
+      </dl>
+      <h3>Where the national figures come from</h3>
+      <ul class="sources">
+        <li><a href="https://www.cancerresearchuk.org/health-professional/cancer-statistics/statistics-by-cancer-type/childrens-cancers/incidence">Cancer Research UK, children's cancers incidence statistics</a> (accessed November 2026)</li>
+        <li><a href="https://www.cancerresearchuk.org/health-professional/cancer-statistics/statistics-by-cancer-type/childrens-cancers">Cancer Research UK, children's cancer statistics</a> (accessed November 2026)</li>
+        <li><a href="https://www.cclg.org.uk/about-cancer/about-childhood-cancer/survival-rates">CCLG, children and young people's cancer in numbers</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="act meadow grain" id="act" hidden>
+    <div class="wrap act__row">
+      <div class="act__who"><img src="art/mum.webp" alt="Mum" width="393" height="555"><img src="art/dad.webp" alt="Dad" width="393" height="555"></div>
+      <div class="act__words">
+        <h2 class="plaque plaque--title">Does a child you know need us?</h2>
+        <div class="act__buttons" id="act-buttons"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__row">
+    <img class="foot__happy" src="art/happy-days.png" alt="Have happy days" width="251" height="251">
+    <p>BeMoreFab Children's Cancer Charity. Numbers last updated <span data-date>today</span>.</p>
+  </div>
+</footer>
+
+<script src="../app.js" defer></script>
+</body>
+</html>

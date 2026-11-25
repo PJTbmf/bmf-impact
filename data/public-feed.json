@@ -1,56 +1,116 @@
 {
-  "schema": 1,
-  "sample": true,
-  "sample_note": "The Primary Virtual School figures are real (Pencil Spaces, 1 September to 25 November 2026). Every other BeMoreFab figure is a made-up sample.",
-  "as_of": "2026-11-25",
+  "schema": 2,
+  "draft": true,
+  "draft_note": "These are real figures: Beacon on 24 November 2026 and Pencil Spaces to 25 November 2026. They are not signed off yet.",
+  "as_of": "2026-11-24",
   "school_year_label": "2026/27",
   "headline": {
-    "children_supported_now": 128,
-    "education_children_now": 86,
+    "children_supported_now": 195,
+    "education_children_now": 64,
     "pvs_minutes_school_year": 7253,
-    "ff_siblings_now": 61
+    "ff_siblings_now": 129
   },
-  "registrations_by_school_year": [
+  "registrations_by_month": [
     {
-      "label": "2022/23",
+      "label": "Dec 2025",
+      "value": 5
+    },
+    {
+      "label": "Jan 2026",
+      "value": 11
+    },
+    {
+      "label": "Feb 2026",
+      "value": 11
+    },
+    {
+      "label": "Mar 2026",
+      "value": 12
+    },
+    {
+      "label": "Apr 2026",
+      "value": 6
+    },
+    {
+      "label": "May 2026",
+      "value": 9
+    },
+    {
+      "label": "Jun 2026",
+      "value": 25
+    },
+    {
+      "label": "Jul 2026",
+      "value": 19
+    },
+    {
+      "label": "Aug 2026",
+      "value": 21
+    },
+    {
+      "label": "Sep 2026",
+      "value": 27
+    },
+    {
+      "label": "Oct 2026",
+      "value": 19
+    },
+    {
+      "label": "Nov 2026",
       "value": 38
-    },
-    {
-      "label": "2023/24",
-      "value": 61
-    },
-    {
-      "label": "2024/25",
-      "value": 84
-    },
-    {
-      "label": "2025/26",
-      "value": 97
-    },
-    {
-      "label": "2026/27 so far",
-      "value": 42
     }
   ],
   "education": {
-    "children_past_12_months": 142,
-    "journeys_started_past_12_months": 47,
-    "by_support_type": [
+    "children_past_12_months": 87,
+    "journeys_started_past_12_months": 82,
+    "children_by_month": [
       {
-        "label": "Primary Virtual School",
-        "value": 41
+        "label": "Dec 2025",
+        "value": 12
       },
       {
-        "label": "Secondary Virtual School",
-        "value": 18
+        "label": "Jan 2026",
+        "value": 15
       },
       {
-        "label": "One-to-one tuition",
-        "value": 17
+        "label": "Feb 2026",
+        "value": 19
       },
       {
-        "label": "Group tuition",
-        "value": 10
+        "label": "Mar 2026",
+        "value": 21
+      },
+      {
+        "label": "Apr 2026",
+        "value": 22
+      },
+      {
+        "label": "May 2026",
+        "value": 24
+      },
+      {
+        "label": "Jun 2026",
+        "value": 33
+      },
+      {
+        "label": "Jul 2026",
+        "value": 31
+      },
+      {
+        "label": "Aug 2026",
+        "value": 27
+      },
+      {
+        "label": "Sep 2026",
+        "value": 37
+      },
+      {
+        "label": "Oct 2026",
+        "value": 46
+      },
+      {
+        "label": "Nov 2026",
+        "value": 64
       }
     ]
   },
@@ -73,108 +133,58 @@
     ]
   },
   "freddies_friends": {
-    "gifts_past_12_months": 118,
+    "gifts_past_12_months": 74,
     "gifts_by_month": [
       {
         "label": "Dec 2025",
-        "value": 24
+        "value": null
       },
       {
         "label": "Jan 2026",
-        "value": 6
+        "value": null
       },
       {
         "label": "Feb 2026",
-        "value": 7
+        "value": 5
       },
       {
         "label": "Mar 2026",
-        "value": 9
+        "value": 5
       },
       {
         "label": "Apr 2026",
-        "value": 14
+        "value": null
       },
       {
         "label": "May 2026",
-        "value": 8
+        "value": 0
       },
       {
         "label": "Jun 2026",
-        "value": 7
+        "value": 12
       },
       {
         "label": "Jul 2026",
-        "value": 9
+        "value": 7
       },
       {
         "label": "Aug 2026",
-        "value": 6
+        "value": 11
       },
       {
         "label": "Sep 2026",
-        "value": 8
+        "value": 5
       },
       {
         "label": "Oct 2026",
-        "value": 9
+        "value": 5
       },
       {
         "label": "Nov 2026",
-        "value": 11
+        "value": 17
       }
     ]
   },
-  "regions": [
-    {
-      "label": "West Midlands",
-      "value": 25
-    },
-    {
-      "label": "East Midlands",
-      "value": 20
-    },
-    {
-      "label": "South East",
-      "value": 15
-    },
-    {
-      "label": "North West",
-      "value": 15
-    },
-    {
-      "label": "London",
-      "value": 10
-    },
-    {
-      "label": "Yorkshire and the Humber",
-      "value": 10
-    },
-    {
-      "label": "East of England",
-      "value": 10
-    },
-    {
-      "label": "South West",
-      "value": 5
-    },
-    {
-      "label": "Scotland",
-      "value": 5
-    },
-    {
-      "label": "Wales",
-      "value": 5
-    },
-    {
-      "label": "North East",
-      "value": null
-    },
-    {
-      "label": "Northern Ireland",
-      "value": null
-    }
-  ],
   "links": {
     "register": "",
     "refer": ""

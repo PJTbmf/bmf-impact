@@ -2,7 +2,7 @@
 
 A web page that shows BeMoreFab's impact figures. It is built to sit inside the charity's WordPress site in a frame.
 
-**Status: draft, in two versions for BeMoreFab to choose between.** The Primary Virtual School figures are real (Pencil Spaces, 1 September to 25 November 2026). Every other BeMoreFab figure is a made-up sample. The page shows a "Draft" banner while `"sample": true` is set in the data file, and search engines are asked not to list it.
+**Status: draft, in two versions for BeMoreFab to choose between.** The figures are real but not signed off: Beacon figures come from the Fabbie feed (Fabbie > Figures in SharePoint, export of 24 November 2026) and Primary Virtual School figures from Pencil Spaces (1 September to 25 November 2026). The page shows a "Draft" banner while `"draft": true` is set in the data file, and search engines are asked not to list it.
 
 | Version | Address | Look |
 | --- | --- | --- |
@@ -50,21 +50,21 @@ Steps 3 and 4 are not automated yet. Until they are, the file is edited by hand.
 
 | Field | Meaning |
 | --- | --- |
-| `sample` | `true` shows the "Draft" banner. Set to `false` only when every figure is real and signed off |
-| `sample_note` | The sentence shown in the banner, saying which figures are real and which are samples |
+| `draft` | `true` shows the "Draft" banner. Set to `false` only when the figures are signed off |
+| `draft_note` | The sentence shown in the banner |
 | `as_of` | The date the figures were taken, as `YYYY-MM-DD` |
-| `headline.children_supported_now` | Children and young people with any support open today |
-| `headline.education_children_now` | Children and young people with education support open today |
+| `headline.children_supported_now` | Fabbie feed: Children supported, Last 7 days |
+| `headline.education_children_now` | Fabbie feed: Education: children supported, Last 7 days |
 | `headline.pvs_minutes_school_year` | Minutes of live Primary Virtual School lessons taught since 1 September. The page works out hours from this |
-| `headline.ff_siblings_now` | Brothers and sisters in Freddie's Friends today |
-| `registrations_by_school_year` | One entry per school year: `label`, `value` |
-| `education.by_support_type` | Children learning with us now, by type of support |
-| `education.children_past_12_months`, `education.journeys_started_past_12_months` | Education totals for the past 12 months |
+| `headline.ff_siblings_now` | Fabbie feed: Freddie's Friends siblings registered (total) |
+| `registrations_by_month` | Fabbie feed: Children and young people registered, each of the last 12 months |
+| `education.children_by_month` | Fabbie feed: Education: children supported, each of the last 12 months |
+| `education.children_past_12_months`, `education.journeys_started_past_12_months` | Fabbie feed: "Since" the month 12 months back |
 | `pvs.lessons_school_year` | Live lessons taught since 1 September |
 | `pvs.wellbeing_min_share` | The smallest share of teaching time given to wellbeing activities (0.3333 = a third). The page shows it as "hours or more", rounded down |
 | `pvs.minutes_by_month` | Minutes taught in each month of this school year |
 | `freddies_friends.gifts_by_month`, `freddies_friends.gifts_past_12_months` | Gifts and treats sent |
-| `regions` | Children supported now, by UK region |
+| `regions` | Children supported now, by UK region. Not in the Fabbie feed yet, so the section stays hidden until this is added |
 | `links.register`, `links.refer` | Full `https://` addresses for the two buttons at the bottom. Leave empty to hide a button |
 
 Privacy rules for the file:
@@ -81,7 +81,8 @@ Privacy rules for the file:
 | Ink brown outline, never black | Every outline and all text is `#2B1A12` |
 | Colours from the table, flat | `fox.css` uses only colours from the guide's table. No gradients or shadows |
 | Characters keep their look and names | Only the Fab App's own artwork is used, unedited |
-| One character per job | Miss Bell: teaching. Bramble and Moss: learning together. Nurse Willow: wellbeing. Mrs Lark: where we stop (privacy). Mr Elder: what changes for children |
+| One character per job | Fab: all our support. Mr Elder (head teacher): education. Miss Bell (class teacher): Primary Virtual School. Fliss and Flash (Fab's sister and brother): Freddie's Friends. Nurse Willow: wellbeing. Bramble and Moss: what changes for children. Mrs Lark: where we stop (privacy). Mum and Dad: register or refer |
+| Grown-ups bigger than children | Children are drawn at about four fifths of a grown-up's height, Flash smaller still |
 | Fab's cancer story belongs to the books only | The "Why we are needed" section has no characters, and no wording ties Fab to cancer |
 | Nothing new without sign-off | Using the characters on this page is a new use. It needs BeMoreFab's sign-off before launch |
 
@@ -112,7 +113,6 @@ Settings → Pages → Source: *Deploy from a branch*, Branch: `main`, folder `/
 
 - [ ] Choose a version (plain or Fab Fox World) and remove the link to the other from the banner
 - [ ] Real figures in `data/public-feed.json`, signed off, with `"sample": false`
-- [ ] Agree which Pencil Spaces sessions count as Primary Virtual School lessons
 - [ ] Wording on the page checked by BeMoreFab
 - [ ] Fab Fox World version: character uses signed off against the guide
 - [ ] `links.register` and `links.refer` filled in

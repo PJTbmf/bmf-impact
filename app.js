@@ -113,6 +113,8 @@
     var isCount = !!opts.isCount;
     var title = opts.title || '';
     var width = Math.max(260, Math.floor(host.clientWidth));
+    // everything in the chart grows with the page's text size (bigger on wide screens)
+    var k = (parseFloat(getComputedStyle(document.documentElement).fontSize) || 16) / 16;
     host.textContent = '';
 
     var values = items.map(function (it) { return hidden(it.value, isCount) ? null : it.value; });
@@ -123,12 +125,12 @@
     var ticks = [];
     for (var t = 0; t <= scale.max + 1e-9; t += scale.step) ticks.push(t);
 
-    var m = { t: 26, r: 14, b: 30, l: Math.max(26, tick(scale.max).length * 7.6 + 12) };
-    var plotH = 200, H = m.t + plotH + m.b;
+    var m = { t: 26 * k, r: 14 * k, b: 30 * k, l: Math.max(26, tick(scale.max).length * 7.6 + 12) * k };
+    var plotH = 200 * k, H = m.t + plotH + m.b;
     var plotW = width - m.l - m.r;
     var n = items.length;
     var band = plotW / n;
-    var bw = Math.max(4, Math.min(24, band - 2));
+    var bw = Math.max(4, Math.min(24 * k, band - 2));
     var y = function (v) { return m.t + plotH - (v / scale.max) * plotH; };
 
     var root = svg('svg', { width: width, height: H, viewBox: '0 0 ' + width + ' ' + H, role: 'img', tabindex: '0' });
@@ -141,17 +143,17 @@
     // gridlines and y ticks (solid hairlines, recessive)
     ticks.forEach(function (tv) {
       root.appendChild(svg('line', { 'class': 'c-grid', x1: m.l, x2: width - m.r, y1: y(tv) + 0.5, y2: y(tv) + 0.5 }));
-      var tx = svg('text', { x: m.l - 8, y: y(tv) + 4, 'text-anchor': 'end' });
+      var tx = svg('text', { x: m.l - 8 * k, y: y(tv) + 4 * k, 'text-anchor': 'end' });
       tx.textContent = tick(tv);
       root.appendChild(tx);
     });
 
     // x labels: skip some when they would collide
     var longest = items.reduce(function (mx, it) { return Math.max(mx, shortLabel(it.label).length); }, 0);
-    var every = Math.max(1, Math.ceil((longest * 7.4 + 10) / band));
+    var every = Math.max(1, Math.ceil((longest * 7.4 + 10) * k / band));
     items.forEach(function (it, i) {
       if ((last - i) % every !== 0) return; // always keep the latest
-      var tx = svg('text', { x: m.l + band * i + band / 2, y: m.t + plotH + 20, 'text-anchor': 'middle' });
+      var tx = svg('text', { x: m.l + band * i + band / 2, y: m.t + plotH + 20 * k, 'text-anchor': 'middle' });
       tx.textContent = shortLabel(it.label);
       root.appendChild(tx);
     });
@@ -166,12 +168,12 @@
       var v = values[i];
       var bar = null;
       if (v === null) {
-        var s = svg('text', { 'class': 'c-small', x: cx, y: m.t + plotH - 6, 'text-anchor': 'middle' });
+        var s = svg('text', { 'class': 'c-small', x: cx, y: m.t + plotH - 6 * k, 'text-anchor': 'middle' });
         s.textContent = '<5';
         root.appendChild(s);
       } else if (v > 0) {
         var h = Math.max(1, m.t + plotH - y(v));
-        bar = svg('path', { 'class': 'c-bar', d: topRounded(cx - bw / 2, m.t + plotH - h, bw, h, 4) });
+        bar = svg('path', { 'class': 'c-bar', d: topRounded(cx - bw / 2, m.t + plotH - h, bw, h, 4 * k) });
         barGroup.appendChild(bar);
       }
       bars.push({ cx: cx, top: v === null || v === 0 ? m.t + plotH : y(v), node: bar });
@@ -180,17 +182,17 @@
     // direct labels: the latest bar, and the tallest if it is somewhere else and has room
     function label(i) {
       if (i < 0 || values[i] === null) return;
-      var tx = svg('text', { 'class': 'c-val', x: bars[i].cx, y: bars[i].top - 7, 'text-anchor': 'middle' });
+      var tx = svg('text', { 'class': 'c-val', x: bars[i].cx, y: bars[i].top - 7 * k, 'text-anchor': 'middle' });
       tx.textContent = nf.format(values[i]);
       root.appendChild(tx);
     }
     label(last);
-    var room = nf.format(top).length * 8 + 8;
+    var room = (nf.format(top).length * 8 + 8) * k;
     if (peak !== last && values[peak] !== values[last] && (last - peak) * band > room) label(peak);
 
     // hit areas: the whole slot, top to bottom, so nobody has to land on a thin bar
     items.forEach(function (it, i) {
-      var hit = svg('rect', { 'class': 'c-hit', x: m.l + band * i, y: m.t - 20, width: band, height: plotH + 20 });
+      var hit = svg('rect', { 'class': 'c-hit', x: m.l + band * i, y: m.t - 20 * k, width: band, height: plotH + 20 * k });
       hit.addEventListener('pointerenter', function () { show(i); });
       hit.addEventListener('pointerdown', function () { show(i); });
       root.appendChild(hit);
@@ -214,7 +216,7 @@
       tip.hidden = false;
       var tw = tip.offsetWidth, th = tip.offsetHeight;
       var left = Math.min(Math.max(0, bars[i].cx - tw / 2), width - tw);
-      var topPx = Math.max(0, bars[i].top - th - 26);
+      var topPx = Math.max(0, bars[i].top - th - 26 * k);
       tip.style.left = left + 'px';
       tip.style.top = topPx + 'px';
     }
@@ -332,12 +334,12 @@
         a.target = '_top'; // leave the frame and open in the main site
         box.appendChild(a);
         made += 1;
-      } else if (feed.sample) {
+      } else if (feed.draft) {
         box.appendChild(el('span', 'act__btn act__btn--todo', w[1]));
       }
     });
-    if (made || feed.sample) section.hidden = false;
-    if (!made && feed.sample) box.appendChild(el('p', 'act__note', 'Draft: these buttons need their links adding.'));
+    if (made || feed.draft) section.hidden = false;
+    if (!made && feed.draft) box.appendChild(el('p', 'act__note', 'Draft: these buttons need their links adding.'));
   }
 
   // ---------- let the host page (WordPress) size the frame ----------
@@ -355,11 +357,18 @@
       // "at least" a share of teaching time: round down so the claim always holds
       pvs_wellbeing_hours_min: isNumber(mins) && isNumber(share) ? Math.floor(mins * share / 60) : null
     };
-    if (feed.sample) {
+    feed.draft = !!(feed.draft || feed.sample);
+    if (feed.draft) {
       var note = document.getElementById('sample-note');
-      if (note && typeof feed.sample_note === 'string' && feed.sample_note) note.textContent = feed.sample_note;
+      var words = feed.draft_note || feed.sample_note;
+      if (note && typeof words === 'string' && words) note.textContent = words;
       document.getElementById('sample-banner').hidden = false;
     }
+    // a section that names the figures it needs is left out until the file has them
+    all('[data-needs]').forEach(function (node) {
+      var v = pick(feed, node.getAttribute('data-needs'));
+      if (v === undefined || v === null || (Array.isArray(v) && !v.length)) node.hidden = true;
+    });
     fillFigures(feed);
     setUpRows(feed);
     setUpColumns(feed);

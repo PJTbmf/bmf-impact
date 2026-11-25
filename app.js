@@ -46,7 +46,7 @@
   function fillFigures(feed) {
     all('[data-figure]').forEach(function (node) {
       var v = pick(feed, node.getAttribute('data-figure'));
-      node.textContent = isNumber(v) ? nf.format(v) : '–';
+      node.textContent = isNumber(v) ? nf.format(v) : (typeof v === 'string' && v ? v : '–');
     });
     // the four tile figures share one size, chosen so the longest still fits
     var tiles = document.querySelector('.tiles');
@@ -352,10 +352,18 @@
   function start(feed) {
     var mins = pick(feed, 'headline.pvs_minutes_school_year');
     var share = pick(feed, 'pvs.wellbeing_min_share');
+    // minutes shown as hours and minutes, e.g. 7253 -> "120h 53m" and "120 hours 53 minutes"
+    function hm(m, long) {
+      if (!isNumber(m)) return null;
+      m = Math.floor(m);
+      var h = Math.floor(m / 60), r = m % 60;
+      return long ? nf.format(h) + (h === 1 ? ' hour ' : ' hours ') + r + (r === 1 ? ' minute' : ' minutes') : nf.format(h) + 'h ' + r + 'm';
+    }
+    // a third of Primary Virtual School time is always wellbeing; rounded down so the claim holds
+    var well = isNumber(mins) && isNumber(share) ? Math.floor(mins * share) : null;
     feed.computed = {
-      pvs_hours_school_year: isNumber(mins) ? Math.round(mins / 60) : null,
-      // "at least" a share of teaching time: round down so the claim always holds
-      pvs_wellbeing_hours_min: isNumber(mins) && isNumber(share) ? Math.floor(mins * share / 60) : null
+      pvs_time: hm(mins, false), pvs_time_long: hm(mins, true),
+      pvs_wellbeing_time: hm(well, false), pvs_wellbeing_time_long: hm(well, true)
     };
     feed.draft = !!(feed.draft || feed.sample);
     if (feed.draft) {

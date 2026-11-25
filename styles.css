@@ -55,9 +55,11 @@ a { color: inherit; text-underline-offset: .18em; }
 /* ---------- sample banner ---------- */
 .sample-banner { background: var(--ink); color: var(--cream); padding: .7rem 1.25rem; text-align: center; font-size: var(--t-small); }
 .sample-banner strong { color: var(--golden); }
+.sample-banner a { color: var(--golden); margin-left: .5rem; white-space: nowrap; }
 
 /* ---------- intro ---------- */
 .intro { padding-top: clamp(2rem, 1.2rem + 3vw, 3.75rem); padding-bottom: clamp(1.5rem, 1rem + 2vw, 2.5rem); }
+.intro__logo { display: block; width: clamp(9rem, 6rem + 9vw, 13rem); height: auto; margin-bottom: 1.25rem; }
 .intro h1 { color: var(--orange); }
 .intro__lead { max-width: 58ch; margin-top: 1rem; font-size: clamp(1.1rem, 1rem + .45vw, 1.3rem); line-height: 1.5; }
 .intro__date { margin-top: .8rem; color: var(--ink-soft); font-size: var(--t-small); }

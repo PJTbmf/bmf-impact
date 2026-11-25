@@ -4,7 +4,8 @@
 (function () {
   'use strict';
 
-  var FEED_URL = 'data/public-feed.json';
+  // A page in a sub-folder says where the file is with <html data-feed="../data/public-feed.json">
+  var FEED_URL = document.documentElement.getAttribute('data-feed') || 'data/public-feed.json';
   var SMALL = 5; // a count of children below this is never shown
   var SMALL_TEXT = 'Fewer than 5';
   var SVGNS = 'http://www.w3.org/2000/svg';
@@ -155,8 +156,10 @@
       root.appendChild(tx);
     });
 
-    // bars
+    // bars (in one group, so a page can style or filter them together)
     var bars = [];
+    var barGroup = svg('g', { 'class': 'c-bars' });
+    root.appendChild(barGroup);
     var peak = values.indexOf(top);
     items.forEach(function (it, i) {
       var cx = m.l + band * i + band / 2;
@@ -169,7 +172,7 @@
       } else if (v > 0) {
         var h = Math.max(1, m.t + plotH - y(v));
         bar = svg('path', { 'class': 'c-bar', d: topRounded(cx - bw / 2, m.t + plotH - h, bw, h, 4) });
-        root.appendChild(bar);
+        barGroup.appendChild(bar);
       }
       bars.push({ cx: cx, top: v === null || v === 0 ? m.t + plotH : y(v), node: bar });
     });
@@ -345,11 +348,18 @@
   }
 
   function start(feed) {
+    var mins = pick(feed, 'headline.pvs_minutes_school_year');
+    var share = pick(feed, 'pvs.wellbeing_min_share');
     feed.computed = {
-      pvs_hours_school_year: isNumber(pick(feed, 'headline.pvs_minutes_school_year'))
-        ? Math.round(feed.headline.pvs_minutes_school_year / 60) : null
+      pvs_hours_school_year: isNumber(mins) ? Math.round(mins / 60) : null,
+      // "at least" a share of teaching time: round down so the claim always holds
+      pvs_wellbeing_hours_min: isNumber(mins) && isNumber(share) ? Math.floor(mins * share / 60) : null
     };
-    if (feed.sample) document.getElementById('sample-banner').hidden = false;
+    if (feed.sample) {
+      var note = document.getElementById('sample-note');
+      if (note && typeof feed.sample_note === 'string' && feed.sample_note) note.textContent = feed.sample_note;
+      document.getElementById('sample-banner').hidden = false;
+    }
     fillFigures(feed);
     setUpRows(feed);
     setUpColumns(feed);

@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "sample": true,
+  "as_of": "2026-11-25",
+  "school_year_label": "2026/27",
+  "headline": {
+    "children_supported_now": 128,
+    "education_children_now": 86,
+    "pvs_minutes_school_year": 14220,
+    "ff_siblings_now": 61
+  },
+  "registrations_by_school_year": [
+    { "label": "2022/23", "value": 38 },
+    { "label": "2023/24", "value": 61 },
+    { "label": "2024/25", "value": 84 },
+    { "label": "2025/26", "value": 97 },
+    { "label": "2026/27 so far", "value": 42 }
+  ],
+  "education": {
+    "children_past_12_months": 142,
+    "journeys_started_past_12_months": 47,
+    "by_support_type": [
+      { "label": "Primary Virtual School", "value": 41 },
+      { "label": "Secondary Virtual School", "value": 18 },
+      { "label": "One-to-one tuition", "value": 17 },
+      { "label": "Group tuition", "value": 10 }
+    ]
+  },
+  "pvs": {
+    "children_school_year": 46,
+    "minutes_by_month": [
+      { "label": "Dec 2025", "value": 2640 },
+      { "label": "Jan 2026", "value": 3900 },
+      { "label": "Feb 2026", "value": 3300 },
+      { "label": "Mar 2026", "value": 4260 },
+      { "label": "Apr 2026", "value": 2580 },
+      { "label": "May 2026", "value": 3720 },
+      { "label": "Jun 2026", "value": 4140 },
+      { "label": "Jul 2026", "value": 2700 },
+      { "label": "Aug 2026", "value": 0 },
+      { "label": "Sep 2026", "value": 4380 },
+      { "label": "Oct 2026", "value": 4920 },
+      { "label": "Nov 2026", "value": 4920 }
+    ]
+  },
+  "freddies_friends": {
+    "gifts_past_12_months": 118,
+    "gifts_by_month": [
+      { "label": "Dec 2025", "value": 24 },
+      { "label": "Jan 2026", "value": 6 },
+      { "label": "Feb 2026", "value": 7 },
+      { "label": "Mar 2026", "value": 9 },
+      { "label": "Apr 2026", "value": 14 },
+      { "label": "May 2026", "value": 8 },
+      { "label": "Jun 2026", "value": 7 },
+      { "label": "Jul 2026", "value": 9 },
+      { "label": "Aug 2026", "value": 6 },
+      { "label": "Sep 2026", "value": 8 },
+      { "label": "Oct 2026", "value": 9 },
+      { "label": "Nov 2026", "value": 11 }
+    ]
+  },
+  "regions": [
+    { "label": "West Midlands", "value": 25 },
+    { "label": "East Midlands", "value": 20 },
+    { "label": "South East", "value": 15 },
+    { "label": "North West", "value": 15 },
+    { "label": "London", "value": 10 },
+    { "label": "Yorkshire and the Humber", "value": 10 },
+    { "label": "East of England", "value": 10 },
+    { "label": "South West", "value": 5 },
+    { "label": "Scotland", "value": 5 },
+    { "label": "Wales", "value": 5 },
+    { "label": "North East", "value": null },
+    { "label": "Northern Ireland", "value": null }
+  ],
+  "links": {
+    "register": "",
+    "refer": ""
+  }
+}

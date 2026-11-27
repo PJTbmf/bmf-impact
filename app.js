@@ -363,8 +363,15 @@
     var well = isNumber(mins) && isNumber(share) ? Math.floor(mins * share) : null;
     feed.computed = {
       pvs_time: hm(mins, false), pvs_time_long: hm(mins, true),
-      pvs_wellbeing_time: hm(well, false), pvs_wellbeing_time_long: hm(well, true)
+      pvs_wellbeing_time: hm(well, false), pvs_wellbeing_time_long: hm(well, true),
+      pvs_time_since_start: hm(pick(feed, 'pvs.minutes_since_records_began'), false)
     };
+    // "since February 2026": the month the Pencil Spaces records begin
+    var began = pick(feed, 'pvs.records_began');
+    if (typeof began === 'string' && /^\d{4}-\d{2}$/.test(began)) {
+      var mNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      all('[data-began]').forEach(function (n) { n.textContent = mNames[+began.slice(5, 7) - 1] + ' ' + began.slice(0, 4); });
+    }
     feed.draft = !!(feed.draft || feed.sample);
     if (feed.draft) {
       var note = document.getElementById('sample-note');

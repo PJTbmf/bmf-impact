@@ -37,14 +37,14 @@ Only finished totals go in `data/public-feed.json`.
 
 ## How the figures get here
 
-| Step | What happens |
-| --- | --- |
-| 1 | Power BI Desktop refreshes from Beacon and works out the totals (the same report that feeds Fabbie) |
-| 2 | Primary Virtual School minutes and lessons come from Pencil Spaces (Sessions, calls with at least one participant) |
-| 3 | The totals are written to `data/public-feed.json` in the shape below |
-| 4 | The file is saved to this repository. The page picks it up within about ten minutes |
+| Step | When | What happens |
+|---|---|---|
+| 1 | Mondays, early afternoon | Scheduled task on Patrick's computer reads Pencil Spaces (Sessions, calls only) in Chrome with `tools/pencil_sessions.js`, updates the month table and writes two counts-only files to SharePoint: Fabbie > Figures > Pencil Spaces > `Pencil Spaces months.csv` and `Pencil Spaces feed.csv` |
+| 2 | Whenever Patrick refreshes Power BI | The BMF Impact report (v8 or later) reads `Pencil Spaces feed.csv` and adds its rows to the Fabbie feed, so one export holds Beacon and Pencil Spaces figures. Patrick saves the export in Fabbie > Figures |
+| 3 | Weekdays, late afternoon | Scheduled task on Patrick's computer: if there is a newer Fabbie export or Pencil Spaces read than the live page, it runs `tools/bmf_feed.py public` and uploads `data/public-feed.json` here through Chrome |
+| 4 | About ten minutes later | GitHub Pages shows the new figures |
 
-Steps 3 and 4 are not automated yet. Until they are, the file is edited by hand.
+`tools/bmf_feed.py` does all the counting rules in one place (months under 5 left out, wellbeing third rounded down, refuses any file with unexpected columns). It has three commands: `pencil-merge`, `pencil-feed` and `public`.
 
 ## The data file
 
@@ -63,6 +63,8 @@ Steps 3 and 4 are not automated yet. Until they are, the file is edited by hand.
 | `pvs.lessons_school_year` | Live lessons taught since 1 September |
 | `pvs.wellbeing_min_share` | The smallest share of teaching time given to wellbeing activities (0.3333 = a third). The page shows it as "hours or more", rounded down |
 | `pvs.minutes_by_month` | Minutes taught in each month of this school year |
+| `pvs.minutes_since_records_began`, `pvs.records_began` | All Pencil Spaces minutes since records begin (February 2026) |
+| `pvs_as_of` | When Pencil Spaces was last read |
 | `freddies_friends.gifts_by_month`, `freddies_friends.gifts_past_12_months` | Gifts and treats sent |
 | `regions` | Children supported now, by UK region. Not in the Fabbie feed yet, so the section stays hidden until this is added |
 | `links.register`, `links.refer` | Full `https://` addresses for the two buttons at the bottom. Leave empty to hide a button |

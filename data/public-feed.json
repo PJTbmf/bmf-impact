@@ -3,6 +3,7 @@
   "draft": true,
   "draft_note": "These are real figures: Beacon on 27 November 2026 and Pencil Spaces to 27 November 2026. They are not signed off yet.",
   "as_of": "2026-11-27",
+  "pvs_as_of": "2026-11-27",
   "school_year_label": "2026/27",
   "headline": {
     "children_supported_now": 199,
@@ -131,7 +132,9 @@
         "label": "Nov 2026",
         "value": 2497
       }
-    ]
+    ],
+    "minutes_since_records_began": 17105,
+    "records_began": "2026-02"
   },
   "freddies_friends": {
     "gifts_past_12_months": 80,

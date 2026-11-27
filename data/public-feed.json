@@ -1,15 +1,15 @@
 {
   "schema": 2,
   "draft": true,
-  "draft_note": "These are real figures: Beacon on 24 November 2026 and Pencil Spaces to 25 November 2026. They are not signed off yet.",
-  "as_of": "2026-11-24",
+  "draft_note": "These are real figures: Beacon on 27 November 2026 and Pencil Spaces to 27 November 2026. They are not signed off yet.",
+  "as_of": "2026-11-27",
   "school_year_label": "2026/27",
   "headline": {
-    "children_supported_now": 195,
-    "education_children_now": 64,
-    "pvs_minutes_school_year": 7253,
-    "ff_siblings_now": 129,
-    "children_supported_ever": 224
+    "children_supported_now": 199,
+    "education_children_now": 65,
+    "pvs_minutes_school_year": 7369,
+    "ff_siblings_now": 132,
+    "children_supported_ever": 228
   },
   "registrations_by_month": [
     {
@@ -58,12 +58,12 @@
     },
     {
       "label": "Nov 2026",
-      "value": 38
+      "value": 42
     }
   ],
   "education": {
-    "children_past_12_months": 87,
-    "journeys_started_past_12_months": 82,
+    "children_past_12_months": 88,
+    "journeys_started_past_12_months": 83,
     "children_by_month": [
       {
         "label": "Dec 2025",
@@ -111,12 +111,12 @@
       },
       {
         "label": "Nov 2026",
-        "value": 64
+        "value": 65
       }
     ]
   },
   "pvs": {
-    "lessons_school_year": 134,
+    "lessons_school_year": 137,
     "wellbeing_min_share": 0.3333,
     "minutes_by_month": [
       {
@@ -129,12 +129,12 @@
       },
       {
         "label": "Nov 2026",
-        "value": 2381
+        "value": 2497
       }
     ]
   },
   "freddies_friends": {
-    "gifts_past_12_months": 74,
+    "gifts_past_12_months": 80,
     "gifts_by_month": [
       {
         "label": "Dec 2025",
@@ -182,7 +182,7 @@
       },
       {
         "label": "Nov 2026",
-        "value": 17
+        "value": 23
       }
     ]
   },

@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "draft": true,
+  "draft_note": "Draft for BeMoreFab to review. Figures entered by hand from Beacon on 28 November 2026. Not yet shared with Thrive.",
+  "partner": "Thrive",
+  "as_of": "2026-11-28",
+  "pledge": { "value": 5000, "gifts_goal": 100 },
+  "totals": { "gifts_sent": 6, "value_sent": 268, "children_reached": 6, "gifts_waiting": 0 },
+  "by_month": [ { "label": "Nov 2026", "value": 6 } ],
+  "regions": null,
+  "programme": { "siblings_in_freddies_friends": 132, "launched": "2025-03" }
+}

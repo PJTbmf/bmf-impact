@@ -6,6 +6,7 @@ Commands
   pencil-feed   Turn the month table into a CSV shaped like the Fabbie feed, for Power BI and Fabbie.
   public        Build data/public-feed.json for the impact dashboards from the Fabbie feed CSV
                 and the Pencil Spaces month table.
+  partner       Build a partner's page file (for example data/thrive-feed.json) from the Fabbie feed CSV.
 
 Rules
   - Only totals. The script refuses any input with columns it does not expect.
@@ -219,6 +220,61 @@ def cmd_public(a):
     print(json.dumps({"as_of": beacon_as_of, "pvs_as_of": pvs_as_of, "headline": feed["headline"]}))
 
 
+def cmd_partner(a):
+    """Totals for one funding partner, from the "<Partner>: ..." lines of the Fabbie feed (Power BI v9 onwards)."""
+    rows = read_csv(a.fabbie)
+    if not rows or list(rows[0].keys()) != FEED_COLS:
+        die("Fabbie feed has unexpected columns: %s" % (list(rows[0].keys()) if rows else "empty"))
+    if not 20 <= len(rows) <= 1500:
+        die("Fabbie feed has %d rows (expected 20 to 1,500)" % len(rows))
+    vals = {}
+    for r in rows:
+        try:
+            vals[(r["Metric"], r["Period"])] = int(round(float(r["Value"])))
+        except ValueError:
+            die("non-number value in the Fabbie feed: %r" % r["Value"])
+    as_of = max(r["Data as of"] for r in rows)[:10]
+    P = a.partner
+
+    def g(m, p):
+        if (m, p) not in vals:
+            die("Fabbie feed is missing %s / %s (is the Power BI file version 9 or later?)" % (m, p))
+        return vals[(m, p)]
+
+    small = lambda v: None if 0 < v < 5 else v
+    today = dt.date.fromisoformat(as_of)
+    months, d = [], dt.date(today.year, today.month, 1)
+    for _ in range(24):
+        months.insert(0, d)
+        d = month_start((d - dt.timedelta(days=1)).strftime("%Y-%m"))
+    series = [(x, g(P + ": gifts sent", "Month " + label(x))) for x in months]
+    while len(series) > 1 and series[0][1] == 0:      # start at the first month with a gift
+        series.pop(0)
+    prefix = P + ": children who received a gift, by UK region: "
+    regions = sorted(((m[len(prefix):], v) for (m, p), v in vals.items() if m.startswith(prefix) and p == "All time"), key=lambda t: -t[1])
+    regions = [{"label": n, "value": v} for n, v in regions if v >= 5 and not n.lower().startswith("no uk postcode")]
+    fmt = lambda s: "%d %s %d" % (int(s[8:10]), ["January", "February", "March", "April", "May", "June", "July", "August",
+                                                  "September", "October", "November", "December"][int(s[5:7]) - 1], int(s[:4]))
+    feed = {
+        "schema": 1, "draft": not a.live,
+        "draft_note": "These are real figures from BeMoreFab's records on %s. They are not signed off yet." % fmt(as_of),
+        "partner": P, "as_of": as_of,
+        "pledge": {"value": a.pledge, "gifts_goal": a.gifts_goal},
+        "totals": {
+            "gifts_sent": small(g(P + ": gifts sent", "All time")),
+            "value_sent": g(P + ": value of gifts and postage sent", "All time"),
+            "children_reached": small(g(P + ": children who received a gift", "All time")),
+            "gifts_waiting": small(g(P + ": gifts waiting to be sent", "Right now")),
+        },
+        "by_month": [{"label": label(x), "value": small(v)} for x, v in series],
+        "regions": regions or None,
+        "programme": {"siblings_in_freddies_friends": g("Freddie's Friends siblings registered (total)", "Right now"), "launched": "2025-03"},
+    }
+    json.dump(feed, open(a.out, "w", encoding="utf-8"), indent=2)
+    open(a.out, "a", encoding="utf-8").write("\n")
+    print(json.dumps({"as_of": as_of, "totals": feed["totals"], "regions_shown": len(regions)}))
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -238,8 +294,15 @@ def main():
     u.add_argument("--register")
     u.add_argument("--refer")
     u.add_argument("--out", required=True)
+    t = sub.add_parser("partner")
+    t.add_argument("--fabbie", required=True)
+    t.add_argument("--partner", required=True, help='partner name as it appears in the feed, for example "Thrive"')
+    t.add_argument("--pledge", type=int, required=True, help="pledge in pounds")
+    t.add_argument("--gifts-goal", type=int, default=100)
+    t.add_argument("--live", action="store_true", help="leave the draft banner off")
+    t.add_argument("--out", required=True)
     a = p.parse_args()
-    {"pencil-merge": cmd_pencil_merge, "pencil-feed": cmd_pencil_feed, "public": cmd_public}[a.cmd](a)
+    {"pencil-merge": cmd_pencil_merge, "pencil-feed": cmd_pencil_feed, "public": cmd_public, "partner": cmd_partner}[a.cmd](a)
 
 
 if __name__ == "__main__":

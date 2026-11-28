@@ -53,6 +53,18 @@
 
     rows(document.getElementById('by-month'), d.by_month, 'gifts');
 
+    var stories = (d.stories || []).filter(function (x) { return x && x.quote; });
+    if (stories.length) {
+      var list = document.getElementById('stories-list');
+      list.replaceChildren.apply(list, stories.map(function (x) {
+        var fig = el('figure', 'plaque story');
+        fig.appendChild(el('blockquote', null, x.quote));
+        fig.appendChild(el('figcaption', null, x.by || 'A Freddie\'s Friends family'));
+        return fig;
+      }));
+      document.getElementById('stories').hidden = false;
+    }
+
     var where = document.getElementById('where');
     if (Array.isArray(d.regions) && d.regions.length) {
       where.hidden = false;

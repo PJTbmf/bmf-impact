@@ -63,3 +63,14 @@ a.thrive-plaque:hover::before { border-color: var(--thrive-green); }
 .foot__words { display: flex; flex-direction: column; gap: .5rem; }
 .foot__links { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .35rem 1.25rem; }
 .foot__links a { font-weight: 700; display: inline-block; min-height: 32px; padding: .2rem 0; }
+
+/* stories: quotes on cream plaques, shown only when the figures file has approved stories */
+.stories { padding-bottom: clamp(2.5rem, 1.6rem + 4vw, 4.5rem); }
+.stories__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1.4rem; margin-top: .4rem; }
+.story { margin: 0; padding: 1.3rem 1.4rem 1.2rem; display: flex; flex-direction: column; gap: .8rem; }
+.story:nth-child(odd) { transform: rotate(-.4deg); }
+.story:nth-child(even) { transform: rotate(.45deg); }
+.story blockquote { margin: 0; font-style: italic; font-size: clamp(1.08rem, 1rem + .35vw, 1.22rem); line-height: 1.5; }
+.story blockquote::before { content: '\201C'; } .story blockquote::after { content: '\201D'; }
+.story figcaption { font-weight: 700; font-size: var(--t-small); display: flex; align-items: center; gap: .5rem; }
+.story figcaption::before { content: ''; width: 1.1rem; height: 1rem; flex: none; background: center / contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 22'%3E%3Cpath d='M12 20C4.4 14.2 1.4 10.2 2.5 6.6 3.6 3 8.1 2.2 12 6.7c3.8-4.4 8.5-3.8 9.6-.1 1 3.6-2.2 7.7-9.6 13.4Z' fill='%231EE9B6' stroke='%232B1A12' stroke-width='2.2' stroke-linejoin='round'/%3E%3C/svg%3E"); }

@@ -220,6 +220,26 @@ def cmd_public(a):
     print(json.dumps({"as_of": beacon_as_of, "pvs_as_of": pvs_as_of, "headline": feed["headline"]}))
 
 
+def load_stories(path):
+    """Approved stories, kept by hand: a JSON list of {"quote": ..., "by": ...}. Only these two fields are kept."""
+    if not path:
+        return []
+    try:
+        items = json.load(open(path, encoding="utf-8"))
+    except FileNotFoundError:
+        return []
+    if not isinstance(items, list):
+        die("stories file must be a list")
+    out = []
+    for x in items:
+        if not isinstance(x, dict) or not str(x.get("quote", "")).strip():
+            die("each story needs a quote")
+        if x.get("approved") is not True:
+            continue
+        out.append({"quote": str(x["quote"]).strip(), "by": str(x.get("by", "")).strip()})
+    return out
+
+
 def cmd_partner(a):
     """Totals for one funding partner, from the "<Partner>: ..." lines of the Fabbie feed (Power BI v9 onwards)."""
     rows = read_csv(a.fabbie)
@@ -269,6 +289,7 @@ def cmd_partner(a):
         "by_month": [{"label": label(x), "value": small(v)} for x, v in series],
         "regions": regions or None,
         "programme": {"siblings_in_freddies_friends": g("Freddie's Friends siblings registered (total)", "Right now"), "launched": "2025-03"},
+        "stories": load_stories(a.stories),
     }
     json.dump(feed, open(a.out, "w", encoding="utf-8"), indent=2)
     open(a.out, "a", encoding="utf-8").write("\n")
@@ -300,6 +321,7 @@ def main():
     t.add_argument("--pledge", type=int, required=True, help="pledge in pounds")
     t.add_argument("--gifts-goal", type=int, default=100)
     t.add_argument("--live", action="store_true", help="leave the draft banner off")
+    t.add_argument("--stories", help='hand-kept JSON list of stories; only those with "approved": true are published')
     t.add_argument("--out", required=True)
     a = p.parse_args()
     {"pencil-merge": cmd_pencil_merge, "pencil-feed": cmd_pencil_feed, "public": cmd_public, "partner": cmd_partner}[a.cmd](a)

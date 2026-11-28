@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en-GB" data-feed="../data/thrive-feed.json">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Draft: keep search engines away until BeMoreFab and Thrive have signed this off. Remove this line at launch. -->
+<meta name="robots" content="noindex">
+<title>Thrive and Freddie's Friends</title>
+<meta name="description" content="How Thrive's pledge to BeMoreFab is reaching brothers and sisters of children affected by a cancer diagnosis.">
+<link rel="icon" href="data:,">
+<link rel="preload" href="../fonts/aleo-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/canda.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../fox/fox.css">
+<link rel="stylesheet" href="thrive.css">
+</head>
+<body>
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <filter id="wobble" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.6"/>
+  </filter>
+</svg>
+
+<a class="skip" href="#main">Skip to the numbers</a>
+
+<p class="sample-banner" id="sample-banner" hidden>
+  <strong>Draft.</strong> <span id="sample-note">These figures are not signed off yet.</span>
+</p>
+
+<header class="sky grain">
+  <div class="bunting" role="presentation"></div>
+  <img class="cloud cloud--far" src="../fox/art/cloud.webp" alt="" width="215" height="158">
+  <img class="cloud cloud--near" src="../fox/art/cloud.webp" alt="" width="215" height="158">
+  <div class="wrap sky__row">
+    <a class="sky__logo-link" href="https://bemorefab.co.uk/"><img class="sky__logo" src="../assets/logo.webp" alt="#bemorefab Children's Cancer Charity: visit our website" width="560" height="536"></a>
+    <div class="sky__words">
+      <h1>Thrive and Freddie's Friends</h1>
+      <p class="sky__lead">Thrive has pledged <span data-figure="pledge.value" data-format="gbp">&nbsp;</span> to Freddie's Friends, so that brothers and sisters of children affected by a cancer diagnosis each get a gift chosen for them.</p>
+      <div class="together">
+        <a class="together__words" href="https://bemorefab.co.uk/">BeMoreFab</a>
+        <svg class="together__heart" viewBox="0 0 24 22" role="img" aria-label="and"><path d="M12 20C4.4 14.2 1.4 10.2 2.5 6.6 3.6 3 8.1 2.2 12 6.7c3.800-4.400 8.500-3.800 9.600-.1 1 3.600-2.200 7.700-9.600 13.400Z" fill="#FE4D02" stroke="#2B1A12" stroke-width="2.2" stroke-linejoin="round"/></svg>
+        <a class="thrive-plaque" href="https://www.thrivelearning.com/"><img src="art/thrive-logo.svg" alt="Thrive: visit their website" width="636" height="181"></a>
+      </div>
+      <p class="plaque plaque--date">Last updated <span data-date>today</span></p>
+    </div>
+  </div>
+  <svg class="horizon" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <path class="horizon__grass" d="M0,40 C120,14 240,48 400,30 S660,8 820,30 S1060,52 1200,22 L1200,70 L0,70 Z"/>
+    <path class="horizon__line" d="M0,40 C120,14 240,48 400,30 S660,8 820,30 S1060,52 1200,22"/>
+  </svg>
+</header>
+
+<main id="main">
+
+  <p class="load-error wrap" id="load-error" hidden>We can't show the latest numbers right now. Please try again in a little while.</p>
+
+  <section class="meadow grain tiles" aria-label="So far">
+    <div class="wrap stops stops--three">
+      <article class="stop">
+        <div class="stop__who stop__who--pair"><img class="kid" src="../fox/art/fliss.webp" alt="Fliss" width="300" height="422"><img class="tot" src="../fox/art/flash.webp" alt="Flash" width="240" height="336"></div>
+        <div class="plaque tile">
+          <h2 class="plaque__name">Gifts sent</h2>
+          <p class="stop__lead">So far Thrive has funded</p>
+          <p class="tile__figure" data-figure="totals.gifts_sent">&nbsp;</p>
+          <p class="stop__unit">gifts for brothers and sisters</p>
+          <a class="arrow" href="#freddies-friends">See every gift</a>
+        </div>
+      </article>
+      <article class="stop">
+        <div class="stop__who"><img class="kid" src="../fox/art/fab.webp" alt="Fab" width="393" height="555"></div>
+        <div class="plaque tile tiles--money">
+          <h2 class="plaque__name">Thrive's pledge</h2>
+          <p class="stop__lead">Gifts and postage sent so far come to</p>
+          <p class="tile__figure" data-figure="totals.value_sent" data-format="gbp">&nbsp;</p>
+          <p class="stop__unit">of the <span data-figure="pledge.value" data-format="gbp">&nbsp;</span> Thrive has pledged</p>
+          <a class="arrow" href="#thank-you">Thank you, Thrive</a>
+        </div>
+      </article>
+      <article class="stop">
+        <div class="stop__who stop__who--place"><img src="../fox/art/signpost.webp" alt="" width="153" height="176"></div>
+        <div class="plaque tile">
+          <h2 class="plaque__name">On their way</h2>
+          <p class="stop__lead">Right now we are choosing</p>
+          <p class="tile__figure" data-figure="totals.gifts_waiting">&nbsp;</p>
+          <p class="stop__unit">more gifts for children who have just joined</p>
+          <a class="arrow" href="#join">Register a brother or sister</a>
+        </div>
+      </article>
+    </div>
+    <div class="path" role="presentation"></div>
+  </section>
+
+  <section class="meadow grain" id="freddies-friends">
+    <div class="wrap room__grid">
+      <div class="room__who room__who--pair room__who--sibs"><img class="kid" src="../fox/art/fliss.webp" alt="Fliss" width="300" height="422"><img class="tot" src="../fox/art/flash.webp" alt="Flash" width="240" height="336"></div>
+      <div class="room__main">
+        <h2 class="plaque plaque--title">One box for every gift</h2>
+        <p class="room__story">Cancer changes life for brothers and sisters too. Freddie's Friends is for them: a gift chosen for each child. Every box below is one gift from Thrive's pledge. When a gift is sent, its box turns orange and gets a Thrive-green ribbon.</p>
+        <div class="poster poster--b">
+          <div class="board-head">
+            <h3>The first <span data-figure="pledge.gifts_goal">&nbsp;</span> gifts</h3>
+            <p class="board-count"><span data-figure="totals.gifts_sent">&nbsp;</span> <small>sent</small></p>
+          </div>
+          <div class="board" id="board" role="img" aria-label="Gifts sent"></div>
+          <p class="board-key"><span><span class="gift gift--sent"></span> Sent to a brother or sister</span><span><span class="gift"></span> Still to come</span></p>
+        </div>
+        <p class="room__links"><a class="arrow" href="https://bemorefab.co.uk/our-services/freddies-friends-sibling-awards/">Read about Freddie's Friends</a></p>
+        <div class="poster poster--a">
+          <h3>Gifts sent each month</h3>
+          <div id="by-month"></div>
+        </div>
+      </div>
+      <div class="room__side">
+        <h3 class="side__title">Because of Thrive</h3>
+        <dl class="notes">
+          <div class="plaque note"><dt data-figure="totals.children_reached">&nbsp;</dt><dd>brothers and sisters have been sent a gift chosen for them</dd></div>
+          <div class="plaque note"><dt data-figure="programme.siblings_in_freddies_friends">&nbsp;</dt><dd>brothers and sisters have joined Freddie's Friends since it began in <span data-launched>2025</span></dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="meadow meadow--where grain" id="where" hidden>
+    <div class="wrap room__grid room__grid--two">
+      <div class="where__words">
+        <div class="where__art"><img class="where__den" src="../fox/art/den-fab.webp" alt="A fox den with a red door" width="241" height="273"></div>
+        <h2 class="plaque plaque--title">Where the gifts have gone</h2>
+        <p class="room__story">Thrive's gifts reach families across the UK. To protect children's privacy we never show a number smaller than 5.</p>
+      </div>
+      <div class="poster poster--a">
+        <h3 class="vh">Brothers and sisters who have received a gift from Thrive, by UK region</h3>
+        <div id="by-region"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="thanks" id="thank-you">
+    <div class="wrap thanks__row">
+      <img class="thanks__logo" src="art/thrive-logo.svg" alt="Thrive" width="636" height="181">
+      <div>
+        <h2>Thank you, Thrive</h2>
+        <p>Every gift on this page was paid for by Thrive. A brother or sister who can feel left on the sidelines gets something chosen just for them, and a reminder that someone is thinking of them too.</p>
+        <p class="thanks__links"><a href="https://www.thrivelearning.com/">Visit Thrive's website</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="act meadow grain" id="join">
+    <div class="wrap act__row">
+      <div class="act__who"><img src="../fox/art/mum.webp" alt="Mum" width="393" height="555"><img src="../fox/art/dad.webp" alt="Dad" width="393" height="555"></div>
+      <div class="act__words">
+        <h2 class="plaque plaque--title">Know a brother or sister who would love a gift?</h2>
+        <p class="room__story">Freddie's Friends is for brothers and sisters of children registered with BeMoreFab. If your family isn't registered yet, start there and we'll help with the rest.</p>
+        <div class="act__buttons">
+          <a class="act__btn" href="https://bemorefab.beaconforms.com/form/67e52597">Register a brother or sister</a>
+          <a class="act__btn act__btn--alt" href="https://bemorefab.beaconforms.com/form/8ee2173c">Register a child with cancer</a>
+          <p class="act__note">Questions? Email <a href="mailto:contact@bemorefab.co.uk">contact@bemorefab.co.uk</a> or use our <a href="https://bemorefab.co.uk/contact-us/">contact page</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="plain plain--about" id="about">
+    <div class="wrap">
+      <h2>About these numbers</h2>
+      <div class="with-who with-who--stop">
+        <img class="with-who__who" src="../fox/art/mrs-lark.webp" alt="Mrs Lark with her stop sign" width="393" height="555">
+        <div class="poster poster--a">
+          <h3>Where we stop</h3>
+          <p>These are totals only. Nothing here can identify a child or a family. Any count under 5 is hidden.</p>
+        </div>
+      </div>
+      <dl class="defs-list">
+        <div><dt>Gifts sent</dt><dd>Freddie's Friends gifts paid for from Thrive's pledge that have been sent to a brother or sister.</dd></div>
+        <div><dt>Sent so far</dt><dd>The cost of those gifts, and any postage, added up.</dd></div>
+        <div><dt>On their way</dt><dd>Gifts from Thrive's pledge that we are choosing or packing now.</dd></div>
+        <div><dt>How often it updates</dt><dd>From BeMoreFab's own records. Last updated <span data-date>today</span>.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__row">
+    <img class="foot__happy" src="../fox/art/happy-days.png" alt="Have happy days" width="251" height="251">
+    <div class="foot__words">
+      <p>BeMoreFab Children's Cancer Charity, with thanks to Thrive. Numbers last updated <span data-date>today</span>.</p>
+      <ul class="foot__links">
+        <li><a href="https://bemorefab.co.uk/">BeMoreFab website</a></li>
+        <li><a href="https://bemorefab.co.uk/our-services/freddies-friends-sibling-awards/">Freddie's Friends</a></li>
+        <li><a href="https://pjtbmf.github.io/bmf-impact/fox/">Our impact</a></li>
+        <li><a href="https://donate.justgiving.com/charity/bemorefab/donation-amount">Donate</a></li>
+        <li><a href="https://bemorefab.co.uk/contact-us/">Contact us</a></li>
+        <li><a href="https://www.thrivelearning.com/">Thrive</a></li>
+        <li><a href="https://bemorefab.co.uk/privacy-policy/">Privacy policy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="thrive.js?v=1" defer></script>
+</body>
+</html>
